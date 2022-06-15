@@ -1,3 +1,13 @@
+const pwd = require('./pwd')
+
+const ls = require('./ls')
+
+
+const call = (output) => {
+    process.stdout.write(output);
+    process.stdout.write("\nprompt > ");
+  };
+
 // output a prompt
 process.stdout.write('prompt > ');
 
@@ -5,6 +15,12 @@ process.stdout.write('prompt > ');
 process.stdin.on('data', (data) => {
     const cmd = data.toString().trim(); // remove the newline
 
-    process.stdout.cwd(bash.js);
-    process.stdout.write('\nprompt > ');
+    if (cmd === 'pwd') {
+        pwd(call)
+    }
+    if (cmd === 'ls') {
+        ls(call)
+    }
+
+
 });
